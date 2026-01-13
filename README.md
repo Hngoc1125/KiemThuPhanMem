@@ -14,8 +14,9 @@ công nghệ em sử dụng: java+maven+JUnit 5
   `src/test/java`: mã kiểm thử đơn vị
 ### Cách chạy kiểm thử
   ```bash
-  (mvn test)
-```
+ ( mvn test)
+  ```
+
 -----------------------
 ## Buổi 3 – Kiểm thử E2E với Cypress
 Buổi 3 tập trung vào kiểm thử tự động End-to-End (E2E) cho ứng dụng web bằng công cụ Cypress.
