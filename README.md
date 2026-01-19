@@ -57,3 +57,32 @@ Hoặc chạy toàn bộ test ở chế độ headless:
 ### Kết quả
 Tất cả các kịch bản kiểm thử đã được thực thi thành công.
 Kết quả chạy test và video (nếu có) được Cypress tự động sinh ra trong quá trình kiểm thử.
+
+-----------------------
+## Buổi 4 – Kiểm thử JUnit nâng cao với DT, BVA, EP và đo bao phủ bằng JaCoCo
+Nội dung chính
+    Thiết kế test case dựa trên:
+    Decision Table (DT)
+    Boundary Value Analysis (BVA)
+    Equivalence Partitioning (EP)
+    Áp dụng robustness testing với dữ liệu không hợp lệ (giá trị âm, vượt ngưỡng, null)
+    Đánh giá mức độ đầy đủ của kiểm thử thông qua độ bao phủ mã nguồn
+Công cụ sử dụng
+    JUnit 5
+    Maven
+    JaCoCo (Java Code Coverage)
+Nội dung thực hành
+    Viết test cho các phương thức xử lý dữ liệu sinh viên
+    Bổ sung test case để:
+        Bao phủ đầy đủ các lớp tương đương
+        Kiểm tra các giá trị biên 
+        Kích hoạt toàn bộ nhánh điều kiện trong mã nguồn
+    Đo và phân tích:
+        Line Coverage
+        Branch Coverage
+
+Kết quả
+Bộ test đạt 100% Branch Coverage cho các phương thức được kiểm thử
+Không kiểm thử trực tiếp private method, tuân thủ nguyên tắc black-box testing
+Báo cáo JaCoCo được sinh tự động khi chạy test
+![JaCoCo Report](images/jacoco-report.png)
