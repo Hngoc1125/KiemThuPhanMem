@@ -9,24 +9,32 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentAnalyzerTest {
 
+    /*
+     * ==============================
+     * TEST countExcellentStudents()
+     * ==============================
+     */
+
     /**
-     * EP1: Danh sách có điểm hợp lệ (xuất sắc + không xuất sắc)
-     * EP2: Có điểm không hợp lệ (âm, >10)
+     * BVA + EP:
+     * - Biên nghiệp vụ: 8.0
+     * - Biên trên: 10.0
+     * - Ngoài biên: -0.1, 10.1
      */
     @Test
-    public void testCountExcellentStudents_MixedValidAndInvalidScores() {
+    public void testCountExcellentStudents_BoundaryValues() {
         StudentAnalyzer analyzer = new StudentAnalyzer();
 
         assertEquals(
                 2,
                 analyzer.countExcellentStudents(
-                        Arrays.asList(9.0, 8.5, 7.0, 11.0, -1.0)
+                        Arrays.asList(7.9, 8.0, 10.0, -0.1, 10.1)
                 )
         );
     }
 
     /**
-     * EP3: Danh sách rỗng
+     * EP: Danh sách rỗng
      */
     @Test
     public void testCountExcellentStudents_EmptyList() {
@@ -39,26 +47,39 @@ public class StudentAnalyzerTest {
     }
 
     /**
-     * EP1 + EP2:
-     * - Điểm hợp lệ được dùng tính trung bình
-     * - Điểm không hợp lệ bị loại bỏ
+     * Robustness: danh sách null
      */
     @Test
-    public void testCalculateValidAverage_MixedValidAndInvalidScores() {
+    public void testCountExcellentStudents_NullList() {
         StudentAnalyzer analyzer = new StudentAnalyzer();
 
         assertEquals(
-                8.17,
+                0,
+                analyzer.countExcellentStudents(null)
+        );
+    }
+
+    /**
+     * BVA:
+     * - Biên dưới: 0.0
+     * - Biên trên: 10.0
+     * - Ngoài biên: -0.1, 10.1
+     */
+    @Test
+    public void testCalculateValidAverage_BoundaryValues() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+
+        assertEquals(
+                5.0,
                 analyzer.calculateValidAverage(
-                        Arrays.asList(9.0, 8.5, 7.0, 11.0, -1.0)
+                        Arrays.asList(0.0, 10.0, -0.1, 10.1)
                 ),
                 0.01
         );
     }
 
     /**
-     * EP3: Không có điểm hợp lệ
-     * Kỳ vọng: trả về 0.0
+     * EP: Không có điểm hợp lệ
      */
     @Test
     public void testCalculateValidAverage_NoValidScores() {
@@ -67,14 +88,14 @@ public class StudentAnalyzerTest {
         assertEquals(
                 0.0,
                 analyzer.calculateValidAverage(
-                        Arrays.asList(-3.0, 12.0)
+                        Arrays.asList(-2.0, 11.0)
                 ),
                 0.01
         );
     }
 
     /**
-     * EP4: Danh sách rỗng
+     * EP: Danh sách rỗng
      */
     @Test
     public void testCalculateValidAverage_EmptyList() {
@@ -83,6 +104,20 @@ public class StudentAnalyzerTest {
         assertEquals(
                 0.0,
                 analyzer.calculateValidAverage(Collections.emptyList()),
+                0.01
+        );
+    }
+
+    /**
+     * Robustness: danh sách null
+     */
+    @Test
+    public void testCalculateValidAverage_NullList() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+
+        assertEquals(
+                0.0,
+                analyzer.calculateValidAverage(null),
                 0.01
         );
     }

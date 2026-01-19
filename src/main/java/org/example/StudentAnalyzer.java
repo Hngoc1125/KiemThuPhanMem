@@ -26,7 +26,7 @@ public class StudentAnalyzer {
     /**
      * Tính điểm trung bình của các điểm hợp lệ.
      * Điểm hợp lệ: 0 <= score <= 10
-     * Nếu không có điểm hợp lệ → trả về 0.0
+     * Nếu không có điểm hợp lệ hoặc danh sách null/rỗng → trả về 0.0
      */
     public double calculateValidAverage(List<Double> scores) {
         if (scores == null || scores.isEmpty()) {
